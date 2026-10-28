@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#define     m      0b10011    //Chon da thuc toi gian la m(x) = x^4+2+1
+#define     m      0b10011    //Chon da thuc toi gian la m(x) = x^4+x+1
 
 int a;  //phan tu a(x)
 int b;  //phan tu b(x)
@@ -42,15 +42,21 @@ int Nhan_da_thuc(int a, int b)
     return c;
 }
 
+void in_so_nhi_phan(int n)
+{
+    for (int i = 3;i >= 0; i--)
+    {
+        printf("%d", (n>>i) &1);
+    }
+}
+
 int main()
 {
     int ket_qua = 0;
     Gia_tri_phan_tu_thu_nhat();
     Gia_tri_phan_tu_thu_hai();
-    printf("Gia tri cua phan tu thu nhat: %d", a);
-    printf("Gia tri cua phan tu thu hai: %d", b);
 
     ket_qua = Nhan_da_thuc(a, b);
-    printf("Ket qua nhan hai phan tu: %d", ket_qua);
+    in_so_nhi_phan(ket_qua);
     return 0;
 }
