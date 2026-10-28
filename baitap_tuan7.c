@@ -7,21 +7,38 @@ int a;  //phan tu a(x)
 int b;  //phan tu b(x)
 int mode; // 0: GF(2^4), 1: GF(2^8)
 
-void Gia_tri_phan_tu_thu_nhat_G4()
-{
-    int a0, a1, a2, a3;
-    printf("Nhap gia tri phan tu thu nhat: ");
-    scanf("%d %d %d %d", &a3, &a2, &a1, &a0);
-    a = (a3 << 3) | (a2 << 2) | (a1 << 1) | a0;
-}
 
-void Gia_tri_phan_tu_thu_hai_G4()
+void Nhap_gia_tri_phan_tu_thu_nhat()
 {
-    int b0, b1, b2, b3;
+    int u[8];
+    printf("Nhap gia tri phan tu thu nhat: ");
+    if (mode == 0)
+    {
+        scanf("%d %d %d %d", &u[3], &u[2], &u[1], &u[0]);
+        a = (u[3]<<3) | (u[2]<<2) | (u[1]<<1) |(u[0]);
+    }
+    else if (mode == 1)
+    {
+        scanf("%d %d %d %d %d %d %d %d",&u[7], &u[6], &u[5], &u[4], &u[3], &u[2], &u[1], &u[0]);
+        a = (u[7]<<7) | (u[6]<<6) | (u[5]<<5) |(u[4]<<4) | (u[3]<<3) | (u[2]<<2) | (u[1]<<1) |(u[0]);
+    }
+};
+
+void Nhap_gia_tri_phan_tu_thu_hai()
+{
+    int u[8];
     printf("Nhap gia tri phan tu thu hai: ");
-    scanf("%d %d %d %d", &b3, &b2, &b1, &b0);
-    b = (b3 << 3) | (b2 << 2) | (b1 << 1) | b0;
-}
+    if (mode == 0)
+    {
+        scanf("%d %d %d %d", &u[3], &u[2], &u[1], &u[0]);
+        b = (u[3]<<3) | (u[2]<<2) | (u[1]<<1) |(u[0]);
+    }
+    else if (mode == 1)
+    {
+        scanf("%d %d %d %d %d %d %d %d",&u[7], &u[6], &u[5], &u[4], &u[3], &u[2], &u[1], &u[0]);
+        b = (u[7]<<7) | (u[6]<<6) | (u[5]<<5) |(u[4]<<4) | (u[3]<<3) | (u[2]<<2) | (u[1]<<1) |(u[0]);
+    }
+};
 
 // Ham nhan hai phan tu trong GF(2^4)
 int Nhan_da_thuc_GF4(int a, int b)
@@ -42,22 +59,6 @@ int Nhan_da_thuc_GF4(int a, int b)
         b >>= 1;
     }
     return c;
-}
-
-void Gia_tri_phan_tu_thu_nhat_G8()
-{
-    int a0, a1, a2, a3, a4, a5, a6, a7;
-    printf("Nhap gia tri phan tu thu nhat: ");
-    scanf("%d %d %d %d %d %d %d %d", &a7, &a6, &a5, &a4, &a3, &a2, &a1, &a0);
-    a = (a7 << 7) | (a6 << 6) | (a5 << 5) | (a4 << 4) | (a3 << 3) | (a2 << 2) | (a1 << 1) | a0;
-}
-
-void Gia_tri_phan_tu_thu_hai_G8()
-{
-    int b0, b1, b2, b3, b4, b5, b6, b7;
-    printf("Nhap gia tri phan tu thu hai: ");
-    scanf("%d %d %d %d %d %d %d %d", &b7, &b6, &b5, &b4, &b3, &b2, &b1, &b0);
-    b = (b7 << 7) | (b6 << 6) | (b5 << 5) | (b4 << 4) | (b3 << 3) | (b2 << 2) | (b1 << 1) | b0;
 }
 
 int Nhan_da_thuc_GF8(int a, int b)
@@ -102,18 +103,14 @@ int main()
     int ket_qua = 0;
     printf("Nhap che do (0: GF(2^4), 1: GF(2^8)): ");
     scanf("%d", &mode);
+    
+    Nhap_gia_tri_phan_tu_thu_nhat();
+    Nhap_gia_tri_phan_tu_thu_hai();
+
     if (mode == 0)
     {
-        Gia_tri_phan_tu_thu_nhat_G4();
-        Gia_tri_phan_tu_thu_hai_G4();
         ket_qua = Nhan_da_thuc_GF4(a, b);
-    }
-    else if (mode == 1)
-    {
-        Gia_tri_phan_tu_thu_nhat_G8();
-        Gia_tri_phan_tu_thu_hai_G8();
-        ket_qua = Nhan_da_thuc_GF8(a, b);
-    }
+    } else ket_qua = Nhan_da_thuc_GF8(a, b);
 
     in_so_nhi_phan(ket_qua);
     return 0;
