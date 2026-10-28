@@ -1,0 +1,41 @@
+TEST KEY - NHAN DA THUC TRONG GF(2^4) (mode 0) VA GF(2^8) (mode 1)
+Da thuc GF(2^4): x^4 + x + 1
+Da thuc GF(2^8): x^8 + x^4 + x^3 + x + 1
+
+TEST GF(2^4) (mode 0)
+Test 1
+Mong doi: 0111 * 1011 = 0100
+0
+0 1 1 1
+1 0 1 1
+
+Test 2
+Mong doi: 0001 * 1010 = 1010
+0
+0 0 0 1
+1 0 1 0
+
+Test 3
+Mong doi: 1000 * 0010 = 0011
+0
+1 0 0 0
+0 0 1 0
+
+TEST GF(2^8) (mode 1)
+Test 1
+Mong doi: 01010111 * 10000011 = 11000001
+1
+0 1 0 1 0 1 1 1
+1 0 0 0 0 0 1 1
+
+Test 2
+Mong doi: 11011011 * 00010010 = 10110010
+1
+1 1 0 1 1 0 1 1
+0 0 0 1 0 0 1 0
+
+Test 3
+Mong doi: 10000000 * 00000010 = 00011011
+1
+1 0 0 0 0 0 0 0
+0 0 0 0 0 0 1 0
