@@ -17,6 +17,14 @@ uint64_t Nhap_plaintext()
     return plaintext;
 }
 
+uint64_t Nhap_key()
+{
+    uint64_t key;
+    printf("Nhap key (hex): ");
+    scanf("%llx", &key);
+    return key;
+}
+
 int main(){
 
     uint64_t plaintext;
