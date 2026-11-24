@@ -23,3 +23,25 @@ int PC2[48] = {
 };
 
 int shift_table[16] = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
+
+uint64_t PC1_function(uint64_t key)
+{
+    uint64_t result = 0;
+    for (int i = 0; i < 56; i++)
+    {
+        uint16_t bit = (key >> (64 - PC1[i])) & 1;
+        result = (result << 1) | bit;
+    }
+    return result;
+}
+
+uint64_t PC2_function(uint64_t input)
+{
+    uint64_t result = 0;
+    for (int i = 0; i < 48; i++)
+    {
+        uint16_t bit = (input >> (56 - PC2[i])) & 1;
+        result = (result << 1) | bit;
+    }
+    return result;
+}
