@@ -51,7 +51,7 @@ uint64_t PC2_function(uint64_t input)
 //Hàm dịch vòng trái
 uint64_t left_shift(uint64_t input, int s)
 {
-    uint64_t result = (input << s)| (input >> (28 - s)) & (0x0FFFFFFF);
+    uint64_t result = ((input << s)| (input >> (28 - s))) & (0x0FFFFFFF);
     return result;
 }
 
