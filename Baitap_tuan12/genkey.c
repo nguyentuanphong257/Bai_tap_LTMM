@@ -51,3 +51,20 @@ uint64_t left_shift(uint64_t input, int s)
     uint64_t result = (input << s)| (28 - s) & (2^28 - 1);
     return result;
 }
+
+void gen_subkey(uint64_t key, uint64_t subkey[16])
+    {
+        uint64_t v;
+        uint64_t C;
+        uint64_t D;
+
+        v = PC1_function(key);
+        C = (v >> 28) & 0x0FFFFFFF;
+        D = v & 0x0FFFFFFF;
+
+        for (int i=0; i<1;i++){
+            C = left_shift(C, shift_table[i]);
+            D = left_shift(D, shift_table[i]);
+            subkey[i] = PC2_function((C << 28) | D);
+        }
+    }
