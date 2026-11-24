@@ -88,3 +88,15 @@ uint64_t E_function(uint64_t input)
     }
     return result;
 }
+
+uint64_t P_function(uint64_t input)
+{
+    uint64_t result = 0;
+    for (int i = 0; i < 32; i++)
+    {
+        uint16_t bit = (input >> (32 - P[i])) & 1;
+        result = (result << 1) | bit;
+    }
+    return result;
+}
+
