@@ -56,7 +56,7 @@ uint64_t left_shift(uint64_t input, int s)
 }
 
 //Hàm tạo ra 16 key:k1-k16
-void gen_subkey(uint64_t key, uint64_t subkey[16])
+void gen_subkey(uint64_t key, uint64_t k[16])
     {
         uint64_t v;
         uint64_t C;
@@ -69,6 +69,6 @@ void gen_subkey(uint64_t key, uint64_t subkey[16])
         for (int i=0; i<1;i++){
             C = left_shift(C, shift_table[i]);
             D = left_shift(D, shift_table[i]);
-            subkey[i] = PC2_function((C << 28) | D);
+            k[i] = PC2_function((C << 28) | D); //48 bit
         }
     }
