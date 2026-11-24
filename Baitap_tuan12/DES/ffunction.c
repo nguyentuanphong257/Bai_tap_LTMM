@@ -136,7 +136,7 @@ uint32_t f_function(uint32_t R, uint64_t ki)
     for (int i=0; i<8; i++)
     {
         int row = (B[i] >> 4) & 0b10 | (B[i] & 0b1);
-        int col = (B[i] >> 1) & 0x1111;
+        int col = (B[i] >> 1) & 0b1111;
         int sbox_i_output = SBOX[i][row][col];
         sbox_result = (sbox_result << 4) | sbox_i_output;
     }
