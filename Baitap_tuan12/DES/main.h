@@ -16,6 +16,6 @@ uint32_t f_function(uint32_t R, uint64_t ki);
 uint64_t PC1_function(uint64_t key);
 uint64_t PC2_function(uint64_t input);
 uint64_t left_shift(uint64_t input, int s);
-uint64_t gen_subkey(uint64_t key, uint64_t k[16]);
+void gen_subkey(uint64_t key, uint64_t k[16]);
 
 #endif
