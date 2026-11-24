@@ -51,7 +51,7 @@ uint64_t PC2_function(uint64_t input)
 //Hàm dịch vòng trái
 uint64_t left_shift(uint64_t input, int s)
 {
-    uint64_t result = (input << s)| (28 - s) & (2^28 - 1);
+    uint64_t result = (input << s)| (input >> (28 - s)) & (0x0FFFFFFF);
     return result;
 }
 
@@ -66,7 +66,7 @@ void gen_subkey(uint64_t key, uint64_t k[16])
         C = (v >> 28) & 0x0FFFFFFF;
         D = v & 0x0FFFFFFF;
 
-        for (int i=0; i<1;i++){
+        for (int i=0; i<16;i++){
             C = left_shift(C, shift_table[i]);
             D = left_shift(D, shift_table[i]);
             k[i] = PC2_function((C << 28) | D); //48 bit
