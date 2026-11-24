@@ -45,3 +45,9 @@ uint64_t PC2_function(uint64_t input)
     }
     return result;
 }
+
+uint64_t left_shift(uint64_t input, int s)
+{
+    uint64_t result = (input << s)| (28 - s) & (2^28 - 1);
+    return result;
+}
