@@ -90,7 +90,7 @@ int SBOX[8][4][16] = {
 };
 
 //Hàm mở rộng E
-uint64_t E_function(uint64_t input)
+uint64_t E_function(uint32_t input)
 {
     uint64_t result = 0;
     for (int i = 0; i < 48; i++)
@@ -102,7 +102,7 @@ uint64_t E_function(uint64_t input)
 }
 
 //Hàm hoán vị P
-uint64_t P_function(uint64_t input)
+uint32_t P_function(uint32_t input)
 {
     uint64_t result = 0;
     for (int i = 0; i < 32; i++)

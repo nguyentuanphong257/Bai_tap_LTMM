@@ -25,6 +25,21 @@ uint64_t Nhap_key()
     return key;
 }
 
+uint64_t round_16(uint64_t input, uint64_t k[16])
+{
+    uint32_t L = (input >> 32) & 0xFFFFFFFF;
+    uint32_t R = input & 0xFFFFFFFF;
+
+    for (int i = 0; i<16; i++)
+    {
+        uint32_t tmp = R;
+        R = L ^ f_function(R, k[i]);
+        L = tmp;
+    }
+
+    return ((uint64_t)R << 32) | L;
+}
+
 int main(){
 
     uint64_t plaintext;
