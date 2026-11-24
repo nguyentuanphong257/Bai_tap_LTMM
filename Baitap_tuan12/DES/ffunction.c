@@ -139,6 +139,8 @@ uint32_t f_function(uint32_t R, uint64_t ki)
         int col = (B[i] >> 1) & 0x1111;
         int sbox_i_output = SBOX[i][row][col];
         sbox_result = (sbox_result << 4) | sbox_i_output;
-        
     }
+
+    //Hoán vị P
+    return P_function(sbox_result);
 }
