@@ -24,6 +24,7 @@ int PC2[48] = {
 
 int shift_table[16] = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
 
+//Hàm hoán vị PC1
 uint64_t PC1_function(uint64_t key)
 {
     uint64_t result = 0;
@@ -35,6 +36,7 @@ uint64_t PC1_function(uint64_t key)
     return result;
 }
 
+//Hàm hoán vị PC2
 uint64_t PC2_function(uint64_t input)
 {
     uint64_t result = 0;
@@ -46,12 +48,14 @@ uint64_t PC2_function(uint64_t input)
     return result;
 }
 
+//Hàm dịch vòng trái
 uint64_t left_shift(uint64_t input, int s)
 {
     uint64_t result = (input << s)| (28 - s) & (2^28 - 1);
     return result;
 }
 
+//Hàm tạo ra 16 key:k1-k16
 void gen_subkey(uint64_t key, uint64_t subkey[16])
     {
         uint64_t v;
