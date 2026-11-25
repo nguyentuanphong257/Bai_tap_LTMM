@@ -40,13 +40,61 @@ uint64_t round_16(uint64_t input, uint64_t k[16])
     return ((uint64_t)R << 32) | L;
 }
 
+ //Test vector 1
+    uint64_t plaintext1 = 0x0123456789ABCDEF;
+    uint64_t key1 = 0x133457799BBCDFF1;
+    uint64_t ciphertext1 = 0x85E813540F0AB405;
+
+//Test vector 2
+    uint64_t plaintext2 = 0x0000000000000000;
+    uint64_t key2 = 0x0000000000000000;
+    uint64_t ciphertext2 = 0x8CA64DE9C1B123A7;
+
+//Test vector 3
+    uint64_t plaintext3 = 0x8787878787878787;
+    uint64_t key3 = 0x0E329232EA6D0D73;
+    uint64_t ciphertext3 = 0x0000000000000000;
+
 int main(){
+    int choice;
 
     uint64_t plaintext;
     uint64_t key;
+    uint64_t expected_ciphertext;
+
+    printf("Chon test vector (1-3):\n");
+    scanf("%d",&choice);
+
+    switch (choice)
+    {
+        case 1: 
+            plaintext = plaintext1;
+            key = key1;
+            expected_ciphertext = ciphertext1;
+            break;
+        case 2:
+            plaintext = plaintext2;
+            key = key2;
+            expected_ciphertext = ciphertext2;
+            break;
+        case 3:
+            plaintext = plaintext3;
+            key = key3;
+            expected_ciphertext = ciphertext3;
+            break;
+        default:
+            printf("Lua chon khong hop le!\n");
+            return 1;
+    }
+
+    printf("Thong tin test vector:\n");
+    printf("Plaintext = %llX\n",plaintext);
+    printf("Key= %llX\n",key);
+    printf("Expected  = %llX\n",expected_ciphertext);
+    printf("\nPlaintext binary:\n");
+    print_binary64(plaintext);
+
     uint64_t k[16];
-    plaintext = Nhap_plaintext();
-    key = Nhap_key();
 
     //Sinh 16 subkey từ key
     gen_subkey(key, k);
